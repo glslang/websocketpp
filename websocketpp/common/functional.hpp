@@ -65,8 +65,12 @@ namespace lib {
 #ifdef _WEBSOCKETPP_CPP11_FUNCTIONAL_
     using std::function;
     using std::bind;
-    using std::ref;
+    // using std::ref;
     namespace placeholders = std::placeholders;
+    template <typename T>
+    T& ref(T& t) {
+        return t;
+    }
 
     // There are some cases where a C++11 compiler balks at using std::ref
     // but a C++03 compiler using boost function requires boost::ref. As such
